@@ -5,17 +5,32 @@ presilo
 
 .SH SYNOPSIS
 
-Synopsis.
+Generates code in many languages from json-schema files.
 
 .SH DESCRIPTION
 
-Description.
+Generates code in many languages from json-schema files.
 
 .SH OPTIONS
 
-presilo
+presilo [-m][-l][-o][-t][-unsafemodule] [-a] <input files>
 
 Usage:
 
-.IP -s
-A switch.
+.IP -m
+Specifies the module, or package, to be used in generated files.
+
+.IP -l
+Specifies the language with which to generate code.
+
+.IP -o
+Specifies the directory (not file) to place generated files.
+
+.IP -t
+Specifies (as a string) the tablestyle of generated files. Defaults to hard tab, but can be overridden for legacy indentation styles.
+
+.IP -unsafemodule
+If specified, will bypass language-specific module name checks, so that any module name can be used - regardless of if it's valid for the target language.
+
+.IP -a
+Lists flags.
