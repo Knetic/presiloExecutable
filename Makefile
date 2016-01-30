@@ -8,7 +8,7 @@ init: clean
 	go get ./...
 
 build: init
-	go build -o ./.output/presiloExecutable .
+	go build -o ./.output/presilo .
 
 test:
 	go test
@@ -19,25 +19,25 @@ clean:
 
 fmt:
 	@go fmt .
-	@go fmt ./src/presiloExecutable
+	@go fmt ./src/presilo
 
 dist: build test
 
 	export GOOS=linux; \
 	export GOARCH=amd64; \
-	go build -o ./.output/presiloExecutable64 .
+	go build -o ./.output/presilo64 .
 
 	export GOOS=linux; \
 	export GOARCH=386; \
-	go build -o ./.output/presiloExecutable32 .
+	go build -o ./.output/presilo32 .
 
 	export GOOS=darwin; \
 	export GOARCH=amd64; \
-	go build -o ./.output/presiloExecutable_osx .
+	go build -o ./.output/presilo_osx .
 
 	export GOOS=windows; \
 	export GOARCH=amd64; \
-	go build -o ./.output/presiloExecutable.exe .
+	go build -o ./.output/presilo.exe .
 
 package: versionTest fpmTest dist
 
@@ -46,21 +46,21 @@ package: versionTest fpmTest dist
 		-s dir \
 		-t deb \
 		-v $(PRESILO_VERSION) \
-		-n presiloExecutable \
-		./.output/presiloExecutable64=/usr/local/bin/presiloExecutable \
-		./docs/presiloExecutable.7=/usr/share/man/man7/presiloExecutable.7 \
-		./autocomplete/presiloExecutable=/etc/bash_completion.d/presiloExecutable
+		-n presilo \
+		./.output/presilo64=/usr/local/bin/presilo \
+		./docs/presilo.7=/usr/share/man/man7/presilo.7 \
+		./autocomplete/presilo=/etc/bash_completion.d/presilo
 
 	fpm \
 		--log error \
 		-s dir \
 		-t deb \
 		-v $(PRESILO_VERSION) \
-		-n presiloExecutable \
+		-n presilo \
 		-a i686 \
-		./.output/presiloExecutable32=/usr/local/bin/presiloExecutable \
-		./docs/presiloExecutable.7=/usr/share/man/man7/presiloExecutable.7 \
-		./autocomplete/presiloExecutable=/etc/bash_completion.d/presiloExecutable
+		./.output/presilo32=/usr/local/bin/presilo \
+		./docs/presilo.7=/usr/share/man/man7/presilo.7 \
+		./autocomplete/presilo=/etc/bash_completion.d/presilo
 
 	@mv ./*.deb ./.output/
 
@@ -69,20 +69,20 @@ package: versionTest fpmTest dist
 		-s dir \
 		-t rpm \
 		-v $(PRESILO_VERSION) \
-		-n presiloExecutable \
-		./.output/presiloExecutable64=/usr/local/bin/presiloExecutable \
-		./docs/presiloExecutable.7=/usr/share/man/man7/presiloExecutable.7 \
-		./autocomplete/presiloExecutable=/etc/bash_completion.d/presiloExecutable
+		-n presilo \
+		./.output/presilo64=/usr/local/bin/presilo \
+		./docs/presilo.7=/usr/share/man/man7/presilo.7 \
+		./autocomplete/presilo=/etc/bash_completion.d/presilo
 	fpm \
 		--log error \
 		-s dir \
 		-t rpm \
 		-v $(PRESILO_VERSION) \
-		-n presiloExecutable \
+		-n presilo \
 		-a i686 \
-		./.output/presiloExecutable32=/usr/local/bin/presiloExecutable \
-		./docs/presiloExecutable.7=/usr/share/man/man7/presiloExecutable.7 \
-		./autocomplete/presiloExecutable=/etc/bash_completion.d/presiloExecutable
+		./.output/presilo32=/usr/local/bin/presilo \
+		./docs/presilo.7=/usr/share/man/man7/presilo.7 \
+		./autocomplete/presilo=/etc/bash_completion.d/presilo
 
 	@mv ./*.rpm ./.output/
 

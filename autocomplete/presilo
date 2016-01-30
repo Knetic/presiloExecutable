@@ -10,4 +10,4 @@ completion()
 	#export COMPREPLY=($(compgen -f "foo bar baz"))
 }
 
-complete -F completion presiloExecutable
+complete -F completion presilo
