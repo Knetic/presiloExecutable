@@ -1,6 +1,8 @@
 presiloExecutable
 ====
 
+[![Build Status](https://travis-ci.org/Knetic/presiloExecutable.svg?branch=master)](https://travis-ci.org/Knetic/presiloExecutable)
+
 This is the canonical `presilo` binary executable project. It's fairly thin, and served mostly to provide a binary that fully implements the [presilo library](http://github.com/Knetic/presilo). The library itself is where the parsing/codegen logic lives.
 
 How do I use it?
