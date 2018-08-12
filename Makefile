@@ -86,6 +86,11 @@ package: versionTest fpmTest dist
 
 	@mv ./*.rpm ./.output/
 
+dockerPackage: dist
+
+	docker build . -t knetic/presilo
+	docker push knetic/presilo
+
 fpmTest:
 ifeq ($(shell which fpm), )
 	@echo "FPM is not installed, no packages will be made."
